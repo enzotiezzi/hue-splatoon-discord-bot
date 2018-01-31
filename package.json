@@ -1,0 +1,11 @@
+{
+  "name": "hue-bot",
+  "version": "1.0.0",
+  "description": "bot para time de spaltoon",
+  "main": "bot.js",
+  "author": "enzo tiezzi",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "winston": "^2.4.0"
+  }
+}
