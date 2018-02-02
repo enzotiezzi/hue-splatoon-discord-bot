@@ -76,6 +76,9 @@ function handleTreino(cmd, message) {
             message.author.createDM()
                 .then(x => x.send('olá membro da HUE'));
             break;
+        case 'limpar':
+            treino = [];
+            break;
     }
 }
 
