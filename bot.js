@@ -27,6 +27,9 @@ bot.on('message', function (message) {
             case 'check-in-treino':
                 handleTreino(cmd, message);
                 break;
+            case 'lfg':
+                handleLFG(cmd, message);
+                break;
         }
     }
 });
@@ -82,7 +85,7 @@ function handleTreino(cmd, message) {
         case 'chamar':
             for (var i = 0; i < treino.length; i++) {
                 var member = message.channel.members.find(x => (x.user.username + '#' + x.user.discriminator) == treino[i]);
-                
+
                 if (member != null && member != undefined) {
                     member.createDM()
                         .then(x => x.send('Bora treinar'));
@@ -93,6 +96,57 @@ function handleTreino(cmd, message) {
     }
 }
 
+function handleLFG(cmd, message) {
+    var userId = message.author.id;
+    var userName = message.author.username + '#' + message.author.discriminator;
+
+    switch (cmd) {
+        case 'twin':
+            if (twin.indexOf(userId) != -1)
+                message.reply('você já está na lista de TWINS');
+            else {
+                twin.push(userId);
+                message.channel.send('@everyone ' + userName + ' está procurando TWIN');
+            }
+            break;
+        case 'sair':
+            var twinIndex = twin.indexOf(userId);
+            var quadIndex = quad.indexOf(userId);
+
+            if (twinIndex != -1) twin.splice(twinIndex, 1);
+            if (quadIndex != -1) quadIndex.splice(quadIndex, 1);
+
+            message.reply('você saiu das listas de twin e quad');
+            break;
+        case 'quad':
+            if (quad.indexOf(userId) != -1)
+                message.reply('você já está na lista de QUADS');
+            else {
+                quad.push(userId);
+
+                var qtd = Math.abs(quad.length - 4);
+
+                if (qtd <= 0) {
+                    for (var i = 0; i < quad.length; i++) {
+                        var member = message.channel.members.find(x => x.user.id == quad[i]);
+
+                        if (member != null && member != undefined) {
+                            message.channel.send(member.user.toString());
+                            member.createDM()
+                                .then(x => x.send('Tem quad pra jogar'));
+                        }
+                    }
+                }
+                else {
+                    message.channel.send('@everyone +' + qtd);
+                }
+            }
+            break;
+    }
+}
+
 bot.login(auth.token);
 
 var treino = [];
+var twin = [];
+var quad = [];
