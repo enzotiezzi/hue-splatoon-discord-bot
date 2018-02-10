@@ -113,11 +113,18 @@ function handleLFG(cmd, message) {
             var twinIndex = twin.indexOf(userId);
             var quadIndex = quad.indexOf(userId);
 
-            if (twinIndex != -1) twin.splice(twinIndex, 1);
-            else message.reply('você já saiu das listas de twin');
-            if (quadIndex != -1) quad.splice(quadIndex, 1);
-            else message.reply('você já saiu das listas de quad');
+            if (twinIndex != -1) {
+                twin.splice(twinIndex, 1);
+                message.reply('você saiu das lista de twin');
+            }
+            else message.reply('você já saiu da lista de twin');
             
+            if (quadIndex != -1) {
+                quad.splice(quadIndex, 1);
+                message.reply('você saiu das lista de quad');
+            }
+            else message.reply('você já saiu da lista de quad');
+
             break;
         case 'quad':
             if (quad.indexOf(userId) != -1)
