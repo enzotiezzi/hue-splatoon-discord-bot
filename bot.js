@@ -79,6 +79,17 @@ function handleTreino(cmd, message) {
         case 'limpar':
             treino = [];
             break;
+        case 'chamar':
+            for (var i = 0; i < treino.length; i++) {
+                var member = message.channel.members.find(x => (x.user.username + '#' + x.user.discriminator) == treino[i]);
+                
+                if (member != null && member != undefined) {
+                    member.createDM()
+                        .then(x => x.send('Bora treinar'));
+                }
+            }
+
+            break;
     }
 }
 
