@@ -115,7 +115,7 @@ function handleLFG(cmd, message) {
 
             if (twinIndex != -1) twin.splice(twinIndex, 1);
             else message.reply('você já saiu das listas de twin');
-            if (quadIndex != -1) quadIndex.splice(quadIndex, 1);
+            if (quadIndex != -1) quad.splice(quadIndex, 1);
             else message.reply('você já saiu das listas de quad');
             
             break;
