@@ -115,20 +115,20 @@ function handleLFG(cmd, message) {
 
             if (twinIndex != -1) {
                 twin.splice(twinIndex, 1);
-                message.reply('você saiu das lista de twin');
+                message.reply('você saiu da lista de twin');
             }
             else message.reply('você já saiu da lista de twin');
-            
+
             if (quadIndex != -1) {
                 quad.splice(quadIndex, 1);
-                message.reply('você saiu das lista de quad');
+                message.reply('você saiu da lista de quad');
             }
             else message.reply('você já saiu da lista de quad');
 
             break;
         case 'quad':
             if (quad.indexOf(userId) != -1)
-                message.reply('você já está na lista de QUADS');
+                message.reply('você já está na lista de QUAD');
             else {
                 quad.push(userId);
 
