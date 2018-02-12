@@ -151,10 +151,10 @@ function handleLFG(cmd, message) {
             }
             break;
         case 'still':
-            if(twin.indexOf(userId) != -1) message.channel.send('@eveyrone ' + message.author.toString() + ' ainda está procurando twin');
+            if(twin.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando twin');
             else message.reply('primeiro se inscreva na lista de twin utilizando o comando !twin');
 
-            if(quad.indexOf(userId) != -1) message.channel.send('@eveyrone ' + message.author.toString() + ' ainda está procurando quad');
+            if(quad.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando quad');
             else message.reply('primeiro se inscreva na lista de quad utilizando o comando !quad');
             break;
     }
