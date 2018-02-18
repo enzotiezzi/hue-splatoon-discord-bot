@@ -151,11 +151,45 @@ function handleLFG(cmd, message) {
             }
             break;
         case 'still':
-            if(twin.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando twin');
+            if (twin.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando twin');
             else message.reply('primeiro se inscreva na lista de twin utilizando o comando !twin');
 
-            if(quad.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando quad');
+            if (quad.indexOf(userId) != -1) message.channel.send('@everyone ' + message.author.toString() + ' ainda está procurando quad');
             else message.reply('primeiro se inscreva na lista de quad utilizando o comando !quad');
+            break;
+        case 'limpar':
+            twin = [];
+            quad = [];
+            break;
+        case 'listar':
+            var listaTwin = '';
+            var listaQuad = '';
+
+            for (let index = 0; index < twin.length; index++) {
+                const element = twin[index];
+
+                var member = message.channel.members.find(x => x.user.id == element);
+                listaTwin += member.toString() + '\n';
+            }
+
+            for (let index = 0; index < quad.length; index++) {
+                const element = quad[index];
+
+                var member = message.channel.members.find(x => x.user.id == element);
+                listaQuad += member.toString() + '\n';
+            }
+
+            if (listaTwin.length == 0) message.channel.send('lista de twin está vazia');
+            else {
+                message.channel.send('Lista de TWIN');
+                message.channel.send(listaTwin);
+            }
+
+            if (listaQuad.length == 0) message.channel.send('lista de quad está vazia');
+            else {
+                message.channel.send('Lista de QUAD');
+                message.channel.send(listaQuad);
+            }
             break;
     }
 }
